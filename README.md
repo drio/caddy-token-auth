@@ -4,4 +4,12 @@ Caddy module to implement token authentication middlware for the Caddy [server](
 
 ## Build
 
-Make sure you have [xcaddy installed](https://github.com/caddyserver/xcaddy/releases).
+Make sure you have go installed.
+
+`$ make`
+
+That will build caddy with this module.
+
+You can test it locally by running:
+
+`$ make run`

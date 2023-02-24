@@ -1,15 +1,37 @@
 http://127.0.0.1:10001 http://localhost:10001 {
-    #metrics
+    metrics
+
   #basicauth / {
     # foo:bar
     #foo $2a$14$BV9BqODjUYLjC2pRfOGQJOJB.S2VnjsZuNd9f4Ki2k4sD51XMW1Gu
   #}
+
   handle / {
     route / {
-      tufts_auth stdout
+      tufts_auth {
+        cookie_name foobar
+        failure_url http://localhost:7171/not.html
+        check_url https://aportal.drtufts.net/check
+        check_user drio
+        check_pass 12peap12
+      }
+      respond "all good, you can use the app"
     }
-
-    respond "Hello, world!"
   }
+
 }
 
+http://:9191 {
+  method POST
+  handle /set {
+    header Set-Cookie foobar=xyz
+    header Foo Bar
+    redir https://localhost:7171/static/index.html
+  }
+  respond /ok "ok" 200
+  respond /bad "Access denied" 403
+}
+
+http://:7171 {
+  file_server /static/*
+}
