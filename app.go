@@ -1,4 +1,4 @@
-package visitorip
+package caddy_token_auth
 
 import (
 	"fmt"
@@ -14,7 +14,7 @@ import (
 
 func init() {
 	caddy.RegisterModule(Middleware{})
-	httpcaddyfile.RegisterHandlerDirective("visitor_ip", parseCaddyfile)
+	httpcaddyfile.RegisterHandlerDirective("tufts_auth", parseCaddyfile)
 }
 
 // Middleware implements an HTTP handler that writes the
