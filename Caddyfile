@@ -6,7 +6,7 @@ http://127.0.0.1:10001 http://localhost:10001 {
   #}
   handle / {
     route / {
-      visitor_ip stdout
+      tufts_auth stdout
     }
 
     respond "Hello, world!"
