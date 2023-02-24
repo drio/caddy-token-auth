@@ -1,0 +1,15 @@
+http://127.0.0.1:10001 http://localhost:10001 {
+    #metrics
+  #basicauth / {
+    # foo:bar
+    #foo $2a$14$BV9BqODjUYLjC2pRfOGQJOJB.S2VnjsZuNd9f4Ki2k4sD51XMW1Gu
+  #}
+  handle / {
+    route / {
+      visitor_ip stdout
+    }
+
+    respond "Hello, world!"
+  }
+}
+
