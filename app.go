@@ -16,7 +16,7 @@ import (
 // TODO: name should be token_auth or basic_token_auth
 func init() {
 	caddy.RegisterModule(Middleware{})
-	httpcaddyfile.RegisterHandlerDirective("tufts_auth", parseCaddyfile)
+	httpcaddyfile.RegisterHandlerDirective("token_auth", parseCaddyfile)
 }
 
 // Holds all the module's data
@@ -34,7 +34,7 @@ type Middleware struct {
 // CaddyModule returns the Caddy module information.
 func (Middleware) CaddyModule() caddy.ModuleInfo {
 	return caddy.ModuleInfo{
-		ID:  "http.handlers.tufts_auth",
+		ID:  "http.handlers.token_auth",
 		New: func() caddy.Module { return new(Middleware) },
 	}
 }

@@ -12,7 +12,7 @@ http://127.0.0.1:10001 http://localhost:10001 {
 
   handle / {
     route / {
-      tufts_auth {
+      token_auth {
         cookie_name foobar
         failure_url http://localhost:7171/not.html
         check_url https://aportal.drtufts.net/check
