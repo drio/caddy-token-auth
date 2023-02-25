@@ -12,7 +12,6 @@ import (
 	"github.com/caddyserver/caddy/v2/modules/caddyhttp"
 )
 
-// TODO: name should be token_auth or basic_token_auth
 func init() {
 	caddy.RegisterModule(Middleware{})
 	httpcaddyfile.RegisterHandlerDirective("token_auth", parseCaddyfile)
@@ -37,28 +36,13 @@ func (Middleware) CaddyModule() caddy.ModuleInfo {
 
 // Provision implements caddy.Provisioner.
 func (m *Middleware) Provision(ctx caddy.Context) error {
-	/*
-		switch m.Output {
-		case "stdout":
-			m.w = os.Stdout
-		case "stderr":
-			m.w = os.Stderr
-		default:
-			m.w = os.Stdout
-			//return fmt.Errorf("an output stream is required")
-		}
-	*/
+	// TODO
 	return nil
 }
 
 // Validate implements caddy.Validator.
 func (m *Middleware) Validate() error {
 	// TODO
-	/*
-		if m.w == nil {
-			return fmt.Errorf("no writer")
-		}
-	*/
 	return nil
 }
 

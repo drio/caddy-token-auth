@@ -12,7 +12,7 @@ test-env:
 	echo "cookiename=$$COOKIE_NAME"
 
 build: xcaddy
-	xcaddy build --with github.com/TuftsUniversity/caddy-token-auth
+	xcaddy build --with github.com/drio/caddy-token-auth
 
 xcaddy:
 	go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
