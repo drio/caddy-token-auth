@@ -13,11 +13,11 @@ http://127.0.0.1:10001 http://localhost:10001 {
   handle / {
     route / {
       token_auth {
-        cookie_name foobar
-        failure_url http://localhost:7171/not.html
-        check_url https://aportal.drtufts.net/check
-        check_user drio
-        check_pass 12peap12
+        cookie_name {$COOKIE_NAME}
+        failure_url {$FAILURE_URL}
+        check_url {$CHECK_URL}
+        check_user {$CHECK_USER}
+        check_pass {$CHECK_PASS}
       }
       respond "all good, you can use the app"
     }
