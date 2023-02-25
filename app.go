@@ -3,7 +3,6 @@ package caddy_token_auth
 import (
 	"bytes"
 	"fmt"
-	"io"
 	"net/http"
 	"time"
 
@@ -26,9 +25,6 @@ type Middleware struct {
 	CheckUrl   string `json:"check_url,omitempty"`
 	CheckUser  string `json:"check_user,omitempty"`
 	CheckPass  string `json:"check_pass,omitempty"`
-
-	w io.Writer
-	f string
 }
 
 // CaddyModule returns the Caddy module information.
@@ -91,7 +87,7 @@ func (m Middleware) ServeHTTP(w http.ResponseWriter, r *http.Request, next caddy
 		return nil
 	}
 	if !ok {
-		msg := fmt.Sprintf("token is not valid")
+		msg := "token is not valid"
 		caddy.Log().Info(msg)
 		http.Redirect(w, r, to, http.StatusPermanentRedirect)
 		return nil

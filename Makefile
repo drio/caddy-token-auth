@@ -22,3 +22,13 @@ run: caddy Caddyfile
 
 clean:
 	rm -f caddy
+
+.PHONY: test single-run-test lint
+test:
+	@ls *.go | entr -c -s 'go test -v ./*.go && notify "💚" || notify "🛑"'
+
+single-run-test:
+	go test -v ./*.go
+
+lint:
+	golangci-lint run
