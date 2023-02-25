@@ -6,6 +6,10 @@ http://127.0.0.1:10001 http://localhost:10001 {
     #foo $2a$14$BV9BqODjUYLjC2pRfOGQJOJB.S2VnjsZuNd9f4Ki2k4sD51XMW1Gu
   #}
 
+  handle /ping {
+    respond "pong"
+  }
+
   handle / {
     route / {
       tufts_auth {

@@ -13,23 +13,19 @@ import (
 	"github.com/caddyserver/caddy/v2/modules/caddyhttp"
 )
 
+// TODO: name should be token_auth or basic_token_auth
 func init() {
 	caddy.RegisterModule(Middleware{})
 	httpcaddyfile.RegisterHandlerDirective("tufts_auth", parseCaddyfile)
 }
 
-// Middleware implements an HTTP handler that writes the
-// visitor's IP address to a file or stream.
+// Holds all the module's data
 type Middleware struct {
-	// The file or stream to write to. Can be "stdout"
-	// or "stderr".
 	CookieName string `json:"cookie_name,omitempty"`
 	FailureUrl string `json:"failure_url,omitempty"`
 	CheckUrl   string `json:"check_url,omitempty"`
 	CheckUser  string `json:"check_user,omitempty"`
 	CheckPass  string `json:"check_pass,omitempty"`
-	//PrefixURL    []string `json:"prefix_url,omitempty"`
-	//AllowURL     []string `json:"allow_url,omitempty"`
 
 	w io.Writer
 	f string
@@ -107,15 +103,6 @@ func (m Middleware) ServeHTTP(w http.ResponseWriter, r *http.Request, next caddy
 
 // UnmarshalCaddyfile implements caddyfile.Unmarshaler.
 func (m *Middleware) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
-	/*
-		for d.Next() {
-			if !d.Args(&m.Output) {
-				caddy.Log().Info("filaing here drio here xxxx")
-				return d.ArgErr()
-			}
-		}
-		return nil
-	*/
 	for d.Next() {
 		// token value
 		parameter := d.Val()
