@@ -25,10 +25,10 @@ clean:
 
 .PHONY: test single-run-test lint
 test:
-	@ls *.go | entr -c -s 'go test -v ./*.go && notify "💚" || notify "🛑"'
+	@ls *.go | entr -c -s 'go test -v . && notify "💚" || notify "🛑"'
 
 single-run-test:
-	go test -v ./*.go
+	go test -v .
 
 lint:
 	golangci-lint run
